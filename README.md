@@ -28,3 +28,27 @@ This project simulates the core functionality of an **Applicant Tracking System 
 ---
 
 ## 📂 Project Structure
+
+ai-resume-screening-system/
+│
+├── backend/
+│   ├── __init__.py              # Marks backend as a Python package
+│   ├── main.py                  # FastAPI application & API routes
+│   ├── resume_parser.py         # Resume PDF parsing & skill extraction
+│   ├── scorer.py                # Resume–job matching & scoring logic
+│   └── requirements.txt         # Backend dependencies
+│
+├── sample_resumes/
+│   └── .gitkeep                 # Keeps folder tracked (no real resumes)
+│
+├── .gitignore                   # Git ignore rules
+├── README.md                    # Project documentation
+└── venv/                        # Virtual environment (ignored in Git)
+
+## 📈 Learning Outcomes
+
+- Built REST APIs using FastAPI
+- Worked with file uploads and PDF parsing
+- Implemented resume–job matching logic
+- Practiced clean Git and project structuring
+- Designed an ATS-style backend system
