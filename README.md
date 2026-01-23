@@ -1,60 +1,63 @@
-🧠 AI Resume Screening System
+# 🧠 AI Resume Screening System
 
-An AI-powered Resume Screening System that automatically analyzes resumes, extracts key information, and evaluates how well a candidate matches a given job description based on skill overlap.
+An **AI-powered Resume Screening System** that automatically analyzes resumes, extracts key information, and evaluates how well a candidate matches a given job description based on skill overlap.
 
-This project demonstrates a full-stack application using FastAPI for the backend and React (Vite) for the frontend, focusing on real-world resume processing and scoring logic.
+This project demonstrates a **full-stack application** using **FastAPI** for the backend and **React (Vite)** for the frontend, focusing on real-world resume processing and scoring logic.
 
-⸻
+---
 
-🚀 Project Overview
+## 🚀 Project Overview
 
-Recruiters often spend significant time manually screening resumes. This project aims to automate the initial resume screening process by:
-	•	Uploading resumes in PDF format
-	•	Extracting text, email, and skills from resumes
-	•	Comparing resume skills with job-required skills
-	•	Generating a resume match score
-	•	Providing results through a clean API and frontend interface
+Recruiters often spend significant time manually screening resumes. This project aims to **automate the initial resume screening process** by:
 
-The system is designed to be fast, modular, and scalable, making it suitable for real-world HR automation use cases.
+- Uploading resumes in **PDF format**
+- Extracting **text, email, and skills** from resumes
+- Comparing resume skills with **job-required skills**
+- Generating a **resume match score**
+- Providing results through a clean **API and frontend interface**
 
-⸻
+The system is designed to be **fast, modular, and scalable**, making it suitable for real-world HR automation use cases.
 
-✨ Features
-	•	📄 Upload resumes in PDF format
-	•	🧠 Automatic text extraction from resumes
-	•	📧 Email extraction from resume content
-	•	🛠️ Skill extraction using predefined skill sets
-	•	📊 Resume-to-job matching score calculation
-	•	⚡ REST API built with FastAPI
-	•	🌐 Frontend built using React + Vite
-	•	📘 Interactive API documentation via Swagger UI
+---
 
-⸻
+## ✨ Features
 
-🏗️ Tech Stack
+- 📄 Upload resumes in **PDF format**
+- 🧠 Automatic **text extraction** from resumes
+- 📧 **Email extraction** from resume content
+- 🛠️ **Skill extraction** using predefined skill sets
+- 📊 **Resume-to-job matching score** calculation
+- ⚡ REST API built with **FastAPI**
+- 🌐 Frontend built using **React + Vite**
+- 📘 Interactive API documentation via **Swagger UI**
 
-Backend
-	•	Python
-	•	FastAPI
-	•	Uvicorn
-	•	PDFPlumber
-	•	Regex-based text processing
+---
 
-Frontend
-	•	React
-	•	Vite
-	•	JavaScript
-	•	(Tailwind CSS – UI enhancement in progress)
+## 🏗️ Tech Stack
 
-Tools & Others
-	•	Git & GitHub
-	•	REST APIs
-	•	Swagger UI
+### Backend
+- Python
+- FastAPI
+- Uvicorn
+- PDFPlumber
+- Regex-based text processing
 
-⸻
+### Frontend
+- React
+- Vite
+- JavaScript  
+- Tailwind CSS *(UI enhancement in progress)*
 
-📂 Project Structure
+### Tools & Others
+- Git & GitHub
+- REST APIs
+- Swagger UI
 
+---
+
+## 📂 Project Structure
+
+```text
 ai-resume-screening-system/
 │
 ├── backend/
@@ -74,8 +77,7 @@ ai-resume-screening-system/
 ├── .gitignore               # Ignored files & folders
 ├── README.md                # Project documentation
 
-
-⸻
+---
 
 🔗 API Endpoints
 
@@ -169,3 +171,16 @@ This project showcases:
 	•	Real-world automation use case
 	•	Clean project structuring
 
+👉 A strong addition to resumes, hackathons, and interviews.
+
+---
+
+### ✅ What to do next
+1. Paste this into `README.md`
+2. Save
+3. Commit & push:
+
+```bash
+git add README.md
+git commit -m "Add complete professional README"
+git push
