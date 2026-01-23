@@ -1,54 +1,171 @@
-# AI Resume Screening System
+🧠 AI Resume Screening System
 
-An AI-ready backend system built with **FastAPI** that automatically analyzes resumes (PDF format), extracts key information, and matches resumes against job requirements to generate a suitability score.
+An AI-powered Resume Screening System that automatically analyzes resumes, extracts key information, and evaluates how well a candidate matches a given job description based on skill overlap.
 
-This project simulates the core functionality of an **Applicant Tracking System (ATS)**.
+This project demonstrates a full-stack application using FastAPI for the backend and React (Vite) for the frontend, focusing on real-world resume processing and scoring logic.
 
----
+⸻
 
-## 🚀 Features
+🚀 Project Overview
 
-- Resume upload in PDF format
-- Email extraction from resumes
-- Technical skill extraction
-- Resume scoring based on job requirements
-- Dynamic job skill matching
-- REST API with Swagger documentation
-- Clean and modular backend architecture
+Recruiters often spend significant time manually screening resumes. This project aims to automate the initial resume screening process by:
+	•	Uploading resumes in PDF format
+	•	Extracting text, email, and skills from resumes
+	•	Comparing resume skills with job-required skills
+	•	Generating a resume match score
+	•	Providing results through a clean API and frontend interface
 
----
+The system is designed to be fast, modular, and scalable, making it suitable for real-world HR automation use cases.
 
-## 🛠 Tech Stack
+⸻
 
-- Python 3
-- FastAPI
-- Uvicorn
-- PDFPlumber
+✨ Features
+	•	📄 Upload resumes in PDF format
+	•	🧠 Automatic text extraction from resumes
+	•	📧 Email extraction from resume content
+	•	🛠️ Skill extraction using predefined skill sets
+	•	📊 Resume-to-job matching score calculation
+	•	⚡ REST API built with FastAPI
+	•	🌐 Frontend built using React + Vite
+	•	📘 Interactive API documentation via Swagger UI
 
----
+⸻
 
-## 📂 Project Structure
+🏗️ Tech Stack
+
+Backend
+	•	Python
+	•	FastAPI
+	•	Uvicorn
+	•	PDFPlumber
+	•	Regex-based text processing
+
+Frontend
+	•	React
+	•	Vite
+	•	JavaScript
+	•	(Tailwind CSS – UI enhancement in progress)
+
+Tools & Others
+	•	Git & GitHub
+	•	REST APIs
+	•	Swagger UI
+
+⸻
+
+📂 Project Structure
 
 ai-resume-screening-system/
 │
 ├── backend/
-│   ├── __init__.py              # Marks backend as a Python package
-│   ├── main.py                  # FastAPI application & API routes
-│   ├── resume_parser.py         # Resume PDF parsing & skill extraction
-│   ├── scorer.py                # Resume–job matching & scoring logic
-│   └── requirements.txt         # Backend dependencies
+│   ├── main.py              # FastAPI application entry point
+│   ├── resume_parser.py     # Resume text, email & skill extraction logic
+│   ├── scorer.py            # Resume-job matching score logic
+│   ├── requirements.txt     # Backend dependencies
 │
-├── sample_resumes/
-│   └── .gitkeep                 # Keeps folder tracked (no real resumes)
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx          # Frontend UI logic
+│   │   ├── main.jsx         # React entry point
+│   │   └── index.css        # Global styles
+│   ├── package.json         # Frontend dependencies
 │
-├── .gitignore                   # Git ignore rules
-├── README.md                    # Project documentation
-└── venv/                        # Virtual environment (ignored in Git)
+├── sample_resumes/          # Sample resumes for testing
+├── .gitignore               # Ignored files & folders
+├── README.md                # Project documentation
 
-## 📈 Learning Outcomes
 
-- Built REST APIs using FastAPI
-- Worked with file uploads and PDF parsing
-- Implemented resume–job matching logic
-- Practiced clean Git and project structuring
-- Designed an ATS-style backend system
+⸻
+
+🔗 API Endpoints
+
+Root
+
+GET /
+
+Returns system status and documentation link.
+
+⸻
+
+Upload Resume
+
+POST /upload-resume/
+
+Uploads a resume PDF and extracts text-based information.
+
+⸻
+
+Match Resume with Job Skills
+
+POST /match-resume/
+
+Compares resume skills with job-required skills and returns a match score.
+
+⸻
+
+▶️ How to Run the Project Locally
+
+1️⃣ Backend Setup
+
+cd backend
+python -m venv venv
+source venv/bin/activate   # macOS/Linux
+pip install -r requirements.txt
+uvicorn main:app --reload
+
+Open API docs:
+
+http://127.0.0.1:8000/docs
+
+
+⸻
+
+2️⃣ Frontend Setup
+
+cd frontend
+npm install
+npm run dev
+
+Open frontend:
+
+http://localhost:5173
+
+
+⸻
+
+🧪 How It Works (Flow)
+	1.	User uploads a resume (PDF)
+	2.	Backend extracts text and identifies skills
+	3.	User provides required job skills
+	4.	System compares resume skills with job skills
+	5.	A resume match percentage is calculated
+	6.	Results are returned via API and frontend
+
+⸻
+
+🔮 Future Improvements
+	•	Advanced NLP-based skill extraction
+	•	Resume ranking across multiple candidates
+	•	Authentication for recruiters
+	•	Resume parsing for multiple formats (DOCX)
+	•	Improved UI/UX with Tailwind CSS
+	•	Deployment on cloud platforms
+
+⸻
+
+👨‍💻 Author
+
+Sathya T
+AI & Full-Stack Development Enthusiast
+
+⸻
+
+⭐ Why This Project Matters
+
+This project showcases:
+	•	Backend API design
+	•	Resume parsing logic
+	•	Frontend-backend integration
+	•	Real-world automation use case
+	•	Clean project structuring
+
