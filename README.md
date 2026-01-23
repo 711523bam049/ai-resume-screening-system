@@ -77,28 +77,15 @@ ai-resume-screening-system/
 ├── .gitignore               # Ignored files & folders
 ├── README.md                # Project documentation
 
----
-
-🔗 API Endpoints
-
-Root
-
-GET /
-
-Returns system status and documentation link.
+Sure 👍
+Here it is exactly “like a code”, ready to paste into README.md.
+Everything is inside one Markdown code block.
 
 ⸻
 
-Upload Resume
+🔗 Match Resume with Job Skills
 
-POST /upload-resume/
-
-Uploads a resume PDF and extracts text-based information.
-
-⸻
-
-Match Resume with Job Skills
-
+```http
 POST /match-resume/
 
 Compares resume skills with job-required skills and returns a match score.
@@ -170,17 +157,3 @@ This project showcases:
 	•	Frontend-backend integration
 	•	Real-world automation use case
 	•	Clean project structuring
-
-👉 A strong addition to resumes, hackathons, and interviews.
-
----
-
-### ✅ What to do next
-1. Paste this into `README.md`
-2. Save
-3. Commit & push:
-
-```bash
-git add README.md
-git commit -m "Add complete professional README"
-git push
