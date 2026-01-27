@@ -1,15 +1,25 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { Sparkles, Brain, ArrowRight, ArrowRightCircle } from "lucide-react";
+import { Sparkles, Brain, ArrowRight, Zap, ShieldCheck, Globe } from "lucide-react";
 
 const Welcome = () => {
     const [showSplash, setShowSplash] = useState(true);
+    const [progress, setProgress] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const timer = setTimeout(() => setShowSplash(false), 3000);
-        return () => clearTimeout(timer);
+        const interval = setInterval(() => {
+            setProgress(prev => {
+                if (prev >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => setShowSplash(false), 500);
+                    return 100;
+                }
+                return prev + 2;
+            });
+        }, 30);
+        return () => clearInterval(interval);
     }, []);
 
     return (
@@ -17,42 +27,40 @@ const Welcome = () => {
             {showSplash ? (
                 <motion.div
                     key="splash"
-                    className="fixed inset-0 flex items-center justify-center bg-[#020617] z-[100]"
-                    exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="fixed inset-0 flex flex-col items-center justify-center bg-[#020617] z-[100]"
+                    exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
+                    transition={{ duration: 1.2, ease: [0.77, 0, 0.175, 1] }}
                 >
                     <motion.div
-                        initial={{ scale: 0.2, opacity: 0, rotate: -20 }}
-                        animate={{ scale: 1.5, opacity: 1, rotate: 0 }}
-                        transition={{
-                            duration: 1.2,
-                            type: "spring",
-                            damping: 10,
-                            stiffness: 100
-                        }}
-                        className="flex flex-col items-center"
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="relative flex flex-col items-center"
                     >
-                        <div className="relative">
+                        <div className="relative mb-12">
                             <motion.div
-                                animate={{ rotate: 360, scale: [1, 1.2, 1] }}
-                                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                                className="absolute inset-[-40px] rounded-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 blur-[30px] opacity-70"
+                                animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+                                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                                className="absolute inset-[-60px] rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-cyan-400 blur-[40px] opacity-50"
                             />
-                            <div className="relative bg-[#020617] p-12 rounded-[40px] border border-white/20 shadow-[0_0_50px_rgba(34,211,238,0.3)]">
-                                <Brain className="w-32 h-32 text-white" />
+                            <div className="relative glass-panel p-10 rounded-[40px] border border-white/20">
+                                <Brain className="w-24 h-24 text-white animate-pulse" />
                             </div>
                         </div>
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.8 }}
-                            className="mt-12 text-center"
-                        >
-                            <h1 className="text-6xl font-black italic tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
-                                RESUME.AI
-                            </h1>
-                            <div className="h-1.5 w-48 mx-auto mt-4 rounded-full bg-gradient-to-r from-cyan-400 to-transparent"></div>
-                        </motion.div>
+
+                        <h1 className="text-mega font-black gradient-text tracking-[ -0.08em] italic leading-none">
+                            AI.CORE
+                        </h1>
+
+                        <div className="w-64 h-1 bg-white/10 rounded-full mt-12 overflow-hidden relative">
+                            <motion.div
+                                className="absolute inset-y-0 left-0 bg-gradient-to-r from-blue-400 to-purple-500"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${progress}%` }}
+                            />
+                        </div>
+                        <p className="mt-4 text-white/40 font-bold tracking-widest text-sm uppercase">
+                            Initializing Advanced Neural Engines
+                        </p>
                     </motion.div>
                 </motion.div>
             ) : (
@@ -60,74 +68,78 @@ const Welcome = () => {
                     key="welcome-content"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1 }}
-                    className="min-h-screen flex flex-col items-center justify-center p-8 md:p-20 text-center relative z-10"
+                    className="relative min-h-screen flex flex-col items-center justify-center pt-20 pb-20 px-6 z-10"
                 >
-                    <div className="w-full max-w-[1400px] flex flex-col items-center justify-center min-h-[85vh] ">
+                    {/* Hero Section */}
+                    <div className="w-full max-w-[1600px] flex flex-col items-center">
                         <motion.div
-                            initial={{ y: 30, opacity: 0 }}
+                            initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="px-8 py-3 bg-white/5 border border-white/10 rounded-full backdrop-blur-2xl mb-12"
+                            className="flex items-center gap-3 px-6 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-xl mb-10"
                         >
-                            <span className="text-xl md:text-2xl font-bold text-cyan-400 flex items-center justify-center">
-                                <Sparkles className="w-6 h-6 mr-3 text-yellow-400" />
-                                REVOLUTIONIZING RECRUITMENT
-                            </span>
+                            <Sparkles className="w-5 h-5 text-accent" />
+                            <span className="text-sm font-black tracking-[0.2em] text-white uppercase">The Next Frontier of Talent Acquisition</span>
                         </motion.div>
 
-                        <motion.h1
-                            initial={{ y: 40, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.4 }}
-                            className="text-7xl md:text-[140px] leading-[1] font-black tracking-tight mb-12 text-white"
-                        >
-                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
-                                AI POWERED
-                            </span>
-                            <br />
-                            RESUME SCREENING
-                        </motion.h1>
-
-                        <motion.p
-                            initial={{ y: 40, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.6 }}
-                            className="text-2xl md:text-4xl text-slate-400 max-w-5xl mx-auto leading-relaxed font-medium mb-16"
-                        >
-                            The definitive AI solution for modern recruiters. Precision, speed, and accuracy
-                            redefined for the next generation of global talent.
-                        </motion.p>
-
                         <motion.div
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 1, delay: 0.8 }}
-                            className="w-full flex flex-col items-center"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, delay: 0.2 }}
+                            className="text-center mb-16"
                         >
-                            <div className="mb-16 group">
-                                <p className="text-2xl md:text-3xl font-bold text-slate-300">
-                                    Created for Excellence by
-                                </p>
-                                <h3 className="text-4xl md:text-6xl font-black mt-2 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-500 group-hover:from-cyan-400 group-hover:to-purple-500 transition-all duration-500">
+                            <h1 className="text-mega gradient-text leading-[0.85] mb-4">
+                                BEYOND<br />
+                                HUMAN LIMITS
+                            </h1>
+                            <p className="text-super text-white/20 -mt-4 opacity-50">SCREENS UNLIMITED POTENTIAL</p>
+                        </motion.div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-24">
+                            {[
+                                { icon: Zap, title: "INSTANT SCAN", desc: "Process thousands of resumes in milliseconds." },
+                                { icon: ShieldCheck, title: "UNBIASED AI", desc: "Fair assessment based purely on talent and data." },
+                                { icon: Globe, title: "GLOBAL REACH", desc: "Scale your recruitment across borders seamlessly." }
+                            ].map((feature, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.5 + i * 0.1 }}
+                                    className="glass-card p-10 rounded-[30px]"
+                                >
+                                    <feature.icon className="w-12 h-12 text-accent mb-6" />
+                                    <h3 className="text-2xl font-black mb-3">{feature.title}</h3>
+                                    <p className="text-white/40 leading-relaxed">{feature.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* Integrated Author & CTA Section */}
+                        <div className="w-full flex flex-col items-center gap-12 border-t border-white/5 pt-20">
+                            <div className="flex flex-col items-center">
+                                <p className="text-white/30 font-bold tracking-widest uppercase text-sm mb-4">Architected & Engineered By</p>
+                                <motion.h2
+                                    whileHover={{ scale: 1.05 }}
+                                    className="text-6xl md:text-8xl font-black text-white hover:text-accent transition-colors duration-500 cursor-default"
+                                >
                                     SATHYA.T
-                                </h3>
+                                </motion.h2>
                             </div>
 
                             <motion.button
-                                whileHover={{ scale: 1.05, filter: "brightness(1.2)" }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => navigate("/analyze")}
-                                className="group relative w-full h-[120px] max-w-xl text-3xl md:text-5xl font-black text-white rounded-[30px] overflow-hidden shadow-[0_20px_60px_-15px_rgba(6,182,212,0.5)] transition-all"
+                                className="btn-premium group w-full max-w-2xl min-h-[140px] flex items-center justify-center gap-8 shadow-[0_0_80px_rgba(14,165,233,0.3)]"
                             >
-                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 animate-gradient-x" />
-                                <span className="relative z-10 flex items-center justify-center gap-6">
-                                    GET STARTED
-                                    <ArrowRightCircle className="w-10 h-10 md:w-16 md:h-16 group-hover:translate-x-3 transition-transform duration-500" />
-                                </span>
+                                <span className="text-4xl md:text-6xl font-black tracking-tighter">LAUNCH SYSTEM</span>
+                                <ArrowRight className="w-10 h-10 md:w-16 md:h-16 group-hover:translate-x-4 transition-transform duration-500" />
                             </motion.button>
-                        </motion.div>
+                        </div>
                     </div>
+
+                    {/* Background Subtle Elements */}
+                    <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -z-10" />
                 </motion.div>
             )}
         </AnimatePresence>
@@ -135,3 +147,4 @@ const Welcome = () => {
 };
 
 export default Welcome;
+
